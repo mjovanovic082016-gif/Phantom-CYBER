@@ -1,0 +1,6 @@
+{
+  "name": "Phantom Cyber",
+  "description": "An elite cybersecurity and programming AI assistant with an ultra-fast, minimal black and white workspace interface. Generate code, scripts, security reports, and virtual file structures.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
