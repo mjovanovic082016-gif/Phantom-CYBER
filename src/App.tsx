@@ -525,7 +525,19 @@ export default function App() {
       });
 
       if (!res.ok) {
-        throw new Error(`Erreur API: Code ${res.status}`);
+        let errorDetails = `Erreur API: Code ${res.status}`;
+        try {
+          const errData = await res.json();
+          if (errData && (errData.details || errData.error)) {
+            errorDetails = `${errData.error || ""}: ${errData.details || ""}`.trim();
+          }
+        } catch (_) {
+          try {
+            const text = await res.text();
+            if (text) errorDetails = `${errorDetails} - ${text.slice(0, 100)}`;
+          } catch (_) {}
+        }
+        throw new Error(errorDetails);
       }
 
       const data = await res.json();
